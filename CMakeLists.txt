@@ -19,3 +19,29 @@ project(tic_tac_toe)
 add_executable(tic-tac-toe
     src/tic_tac_toe.cpp
 )
+
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/cmake)
+
+include(FetchContent)
+
+include(AddTestTools)
+
+if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+    FetchContent_Declare(
+        project_options
+        GIT_REPOSITORY  https://github.com/cpp-best-practices/project_options.git
+        GIT_TAG         v0.26.1
+    )
+    FetchContent_MakeAvailable(project_options)
+    include(${project_options_SOURCE_DIR}/Index.cmake)
+    include(${project_options_SOURCE_DIR}/src/DynamicProjectOptions.cmake)
+
+    set(ENABLE_CPPCHECK_DEVELOPER_DEFAULT OFF)
+
+    dynamic_project_options(
+        CLANG_WARNINGS
+        GCC_WARNINGS
+    )
+endif()
+
+add_subdirectory(tests)
