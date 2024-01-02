@@ -12,3 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+add_library(game
+    game.cpp
+)
+
+target_include_directories(game
+    PUBLIC
+        ../inc
+)

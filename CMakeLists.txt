@@ -18,6 +18,12 @@ project(tic_tac_toe)
 
 add_executable(tic-tac-toe
     src/tic_tac_toe.cpp
+    src/game.cpp
+)
+
+target_include_directories(tic-tac-toe
+    PUBLIC
+        inc
 )
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/cmake)

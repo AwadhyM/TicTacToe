@@ -13,8 +13,9 @@
  *  limitations under the License.
  */
 
-#include <iostream>
+#include "game.hpp"
 
 int main() {
+    Game();
     return 0;
 }
